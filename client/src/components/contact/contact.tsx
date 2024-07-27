@@ -1,109 +1,84 @@
+"use client";
 import React from "react";
-import FormControl from '@mui/material/FormControl';
-import OutlinedInput from '@mui/material/OutlinedInput';
+import FormControl from "@mui/material/FormControl";
 import Grid from "@mui/material/Grid";
-import styles from "./contact.module.scss";
-import { TextareaAutosize as Textarea } from '@mui/material';
-import { Button } from "@mui/material";
+import Button from "@mui/material/Button";
+import TextareaAutosize from "@mui/material/TextareaAutosize";
 
+function Contact() {
+  const [isFocused, setIsFocused] = React.useState(false);
 
-export default function Contact() {
   return (
-    <div className={styles.contactForm}>
-      <h3>Contacto</h3>
-      <Grid container spacing={1}>
-        <Grid md={6}>
-          <FormControl 
-            sx={{ m: 1}}
-            className={styles.formControl} 
-            variant="outlined">
-            <OutlinedInput
+    <div className="flex justify-center items-center xs:ml-4 xs:mr-4">
+      <Grid container spacing={2} style={{ maxWidth: "600px" }}>
+        <Grid item xs={12}>
+          <FormControl fullWidth>
+            <TextareaAutosize
+              aria-label="minimum height"
+              minRows={1}
               placeholder="Nombre"
-              aria-describedby="outlined-weight-helper-text"
-              inputProps={{
-                'aria-label': 'weight',
-              }}
-              sx={{
-                '& .MuiOutlinedInput-notchedOutline': {
-                  borderColor: 'black',
-                },
-                '&:hover .MuiOutlinedInput-notchedOutline': {
-                  borderColor: 'black',
-                },
-                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                  borderColor: 'black',
-                },
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)}
+              style={{
+                resize: "none",
+                border: "1px solid",
+                borderRadius: "4px",
+                padding: "8px",
+                width: "100%",
+                borderColor: isFocused ? "black" : "#ccc",
               }}
             />
           </FormControl>
         </Grid>
 
-        <Grid md={6}>
-          <FormControl 
-            sx={{ m: 1}} 
-            className={styles.formControl} 
-            variant="outlined">
-            <OutlinedInput
-              placeholder="Apellido"
-              aria-describedby="outlined-weight-helper-text"
-              inputProps={{
-                'aria-label': 'weight',
-              }}
-              sx={{
-                '& .MuiOutlinedInput-notchedOutline': {
-                  borderColor: 'black',
-                },
-                '&:hover .MuiOutlinedInput-notchedOutline': {
-                  borderColor: 'black',
-                },
-                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                  borderColor: 'black',
-                },
+        <Grid item xs={12}>
+          <FormControl fullWidth>
+            <TextareaAutosize
+              aria-label="minimum height"
+              minRows={1}
+              placeholder="Email"
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)}
+              style={{
+                resize: "none",
+                border: "1px solid",
+                borderRadius: "4px",
+                padding: "8px",
+                width: "100%",
+                borderColor: isFocused ? "black" : "#ccc",
               }}
             />
           </FormControl>
         </Grid>
 
-        <Grid md={12}>
-          <FormControl 
-            sx={{ m: 1}} 
-            className={styles.formControlFull} 
-            variant="outlined">
-            <OutlinedInput
-              placeholder="Correo electronico"
-              aria-describedby="outlined-weight-helper-text"
-              inputProps={{
-                'aria-label': 'weight',
-              }}
-              sx={{
-                '& .MuiOutlinedInput-notchedOutline': {
-                  borderColor: 'black',
-                },
-                '&:hover .MuiOutlinedInput-notchedOutline': {
-                  borderColor: 'black',
-                },
-                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                  borderColor: 'black',
-                },
+        <Grid item xs={12}>
+          <FormControl fullWidth>
+            <TextareaAutosize
+              aria-label="minimum height"
+              minRows={8}
+              placeholder="Mensaje"
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)}
+              style={{
+                resize: "none",
+                border: "1px solid",
+                borderRadius: "4px",
+                padding: "8px",
+                width: "100%",
+                borderColor: isFocused ? "black" : "#ccc",
               }}
             />
           </FormControl>
         </Grid>
 
-        <FormControl 
-            sx={{ m: 1}} 
-            className={styles.formControlArea} 
-            variant="outlined">
-          <Textarea 
-            aria-label="minimum height" 
-            minRows={8} 
-            placeholder="" />
-        </FormControl>
-
-        <div className={styles.buttonContainer}>
-          <Button variant="contained" className={styles.submit}>Enviar</Button>  
-        </div>
+        <Grid item xs={12} style={{ textAlign: "center" }}>
+          <Button variant="contained" color="primary" className="w-[200px]">
+            Enviar
+          </Button>
+        </Grid>
       </Grid>
     </div>
   );
 }
+
+export default Contact;

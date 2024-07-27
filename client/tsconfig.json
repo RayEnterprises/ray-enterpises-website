@@ -18,14 +18,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@assets/*": ["./src/assets/*"],
-      "@components/*": ["./src/components/*"],
-      "@store/*": ["./src/store/*"],
-      "@types/*": ["./src/types/*"],
-      "@constants/*": ["./src/constants/*"]
+      "@/*": ["./src/*"]
     }
   },
-  "include": ["video.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }

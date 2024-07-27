@@ -1,23 +1,21 @@
-import "@assets/styles/globals.scss";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
-import { theme } from "@constants/theme";
-import {NextIntlClientProvider} from 'next-intl';
-import {getMessages} from 'next-intl/server';
- 
-interface RootLayoutProps {
-  children: React.ReactNode;
-  params: {
-    locale: string;
-  };
-}
+import { theme } from "@/constants/theme";
+import "@/assets/styles/globals.css";
 
 export default async function LocaleLayout({
   children,
-  params: {locale}
-}: Readonly<RootLayoutProps>) {
+  params: { locale },
+}: {
+  children: React.ReactNode;
+  params: { locale: string };
+}) {
+  // Providing all messages to the client
+  // side is the easiest way to get started
   const messages = await getMessages();
- 
+
   return (
     <html lang={locale}>
       <body>

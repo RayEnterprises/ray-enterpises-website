@@ -1,14 +1,12 @@
 "use client";
 import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
-import { useTransition } from "react";
+import React, { useTransition } from "react";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import FormControl from "@mui/material/FormControl";
-import MenuItem from "@mui/material/MenuItem";
-import styles from "./switcher.module.scss";
+import { FormControl, MenuItem } from "@mui/material";
 import TranslateIcon from "@mui/icons-material/Translate";
 
-export default function LocalSwitcher() {
+function Language() {
   const [_, startTransition] = useTransition();
   const router = useRouter();
   const locale = useLocale();
@@ -20,11 +18,11 @@ export default function LocalSwitcher() {
   };
 
   return (
-    <>
-      <div className={styles.lang}>
-        <TranslateIcon className={styles.icon} />
+    <React.Fragment>
+      <div className="relative">
+        <TranslateIcon className="absolute mt-[14px]" />
       </div>
-      <FormControl sx={{ m: 1, maxWidth: 60 }}>
+      <FormControl sx={{ m: 1, maxWidth: 70 }}>
         <Select
           variant="outlined"
           value={locale}
@@ -50,14 +48,27 @@ export default function LocalSwitcher() {
             },
           }}
         >
-          <MenuItem value="en">EN</MenuItem>
-          <MenuItem value="es">ES</MenuItem>
-          <MenuItem value="fr">FR</MenuItem>
-          <MenuItem value="pt">PT</MenuItem>
-          <MenuItem value="ru">RU</MenuItem>
-          <MenuItem value="zh">ZH</MenuItem>
+          {["en", "es", "fr", "pt", "ru", "zh"].map((lang) => (
+            <MenuItem
+              key={lang}
+              value={lang}
+              sx={{
+                "&.Mui-selected": {
+                  backgroundColor: "#616161 !important",
+                  outline: "none",
+                },
+                "&:hover": {
+                  backgroundColor: "#424242",
+                },
+              }}
+            >
+              {lang.toUpperCase()}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
-    </>
+    </React.Fragment>
   );
 }
+
+export default Language;

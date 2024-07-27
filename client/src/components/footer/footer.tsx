@@ -1,17 +1,15 @@
-import styles from "./footer.module.scss";
 import { Container } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 
-export default function FooterComponent() {
+function Footer() {
   return (
     <>
-      <footer className={styles.footer}>
+      <footer className="pt-[30px] pb-[30px] bg-footer text-white">
         <Container>
-          <p>&copy; 2024 Ray Enterprises</p>
-
-          <ul>
+          <p className="text-center">&copy; 2024 Ray Enterprises</p>
+          <ul className="flex justify-center space-x-4 mt-4">
             <li>
               <a>
                 <FacebookIcon />
@@ -33,3 +31,5 @@ export default function FooterComponent() {
     </>
   );
 }
+
+export default Footer;

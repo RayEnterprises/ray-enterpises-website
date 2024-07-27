@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { toggleDrawer } from "@/store/drawerSlice";
-import { RootState } from "@store/store";
+import { RootState } from "@/store/store";
 
-export default function MenuComponent() {
+function Menu() {
   const isOpen = useSelector((state: RootState) => state.drawer.isOpen);
   const dispatch = useDispatch();
 
@@ -26,3 +26,5 @@ export default function MenuComponent() {
     </IconButton>
   );
 }
+
+export default Menu;
